@@ -20,10 +20,8 @@
           pkgs.rust-analyzer # LSP
           pkgs.clippy # Linter
           pkgs.rustfmt # Formatter
-          pkgs.rustlings # Learning tool
           pkgs.rustc # Rust compiler
           pkgs.cargo-watch # Auto-rebuild
-          pkgs.cargo-edit # Cargo.toml management
         ];
 
         shellHook = ''
