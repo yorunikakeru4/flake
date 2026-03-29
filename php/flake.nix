@@ -13,11 +13,13 @@
   }:
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
+      pkg = pkgs.php84Packages;
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.php84
-          pkgs.phpactor
+        buildInputs = with pkgs; [
+          php84
+          pkg.php-cs-fixer
+          phpactor
         ];
 
         shellHook = ''

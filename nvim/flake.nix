@@ -66,6 +66,7 @@
           ];
           shellHook = ''
             echo "Dev shell loaded. Neovim ready."
+            nvim --version
           '';
         };
 

@@ -17,10 +17,10 @@
       pkg = pkgs.python313Packages;
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
+        buildInputs = with pkgs; [
           python
-          pkgs.ruff # Linter & formatter
-          pkgs.basedpyright # LSP server
+          ruff # Linter & formatter
+          basedpyright # LSP server
         ];
 
         shellHook = ''

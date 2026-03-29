@@ -15,11 +15,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
+        buildInputs = with pkgs; [
         ];
 
         shellHook = ''
-          echo "Hi"
+          echo "Hi $USER"
 
         '';
       };

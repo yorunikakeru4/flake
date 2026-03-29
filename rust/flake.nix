@@ -15,13 +15,14 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.cargo
-          pkgs.rust-analyzer # LSP
-          pkgs.clippy # Linter
-          pkgs.rustfmt # Formatter
-          pkgs.rustc # Rust compiler
-          pkgs.cargo-watch # Auto-rebuild
+        buildInputs = with pkgs; [
+          cargo
+          rust-analyzer # LSP
+          clippy # Linter
+          rustfmt # Formatter
+          rustc # Rust compiler
+          cargo-watch # Auto-rebuild
+          just
         ];
 
         shellHook = ''
