@@ -15,10 +15,10 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.lua
-          pkgs.lua-language-server
-          pkgs.stylua # Formatter
+        buildInputs = with pkgs; [
+          lua
+          lua-language-server
+          stylua # Formatter
         ];
 
         shellHook = ''

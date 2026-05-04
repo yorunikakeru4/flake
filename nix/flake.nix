@@ -15,11 +15,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.nil # Language server
-          pkgs.alejandra # Formatter
-          pkgs.statix # Linter
-          pkgs.deadnix # Dead code detection
+        buildInputs = with pkgs; [
+          nil # Language server
+          alejandra # Formatter
+          statix # Linter
+          deadnix # Dead code detection
         ];
 
         shellHook = ''

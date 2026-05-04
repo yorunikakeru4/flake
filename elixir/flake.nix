@@ -15,10 +15,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.elixir
-          pkgs.erlang
-          pkgs.inotify-tools
+        buildInputs = with pkgs; [
+          elixir
+          erlang
+          mix
+          inotify-tools
         ];
 
         shellHook = ''

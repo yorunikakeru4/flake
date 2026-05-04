@@ -15,9 +15,9 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.php84
-          pkgs.phpactor
+        buildInputs = with pkgs; [
+          php84
+          phpactor
         ];
 
         shellHook = ''

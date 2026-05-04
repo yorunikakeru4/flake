@@ -15,22 +15,18 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.dog
-          pkgs.go
-          pkgs.gosimports
-          pkgs.golines
-          pkgs.golangci-lint
-          pkgs.gofumpt
-          pkgs.gotools
-          pkgs.go-swagger
-          pkgs.go-task
-          pkgs.delve # Debugger
+        buildInputs = with pkgs; [
+          dog
+          go
+          gosimports
+          golines
+          golangci-lint
+          gotools
+          go-task
         ];
 
         shellHook = ''
           echo "$(go --version)"
-
         '';
       };
     });

@@ -15,18 +15,17 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
-        buildInputs = [
-          pkgs.nodejs
-          pkgs.inspector
-          pkgs.typescript
-          pkgs.vite
-          pkgs.bun
-          pkgs.prettierd
+        buildInputs = with pkgs; [
+          nodejs
+          inspector
+          typescript
+          vite
+          bun
+          prettierd
         ];
 
         shellHook = ''
           echo "$(js --version)"
-
         '';
       };
     });

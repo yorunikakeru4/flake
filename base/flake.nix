@@ -20,7 +20,6 @@
 
         shellHook = ''
           echo "Hi"
-
         '';
       };
     });
