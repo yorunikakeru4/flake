@@ -15,8 +15,11 @@
       pkgs = import nixpkgs {
         inherit system;
 
+        # WARNING: Android SDK packages require accepting the license and unfree packages.
+        # Set allowUnsupportedSystem here too if your host is not supported by nixpkgs.
         config.android_sdk.accept_license = true;
         config.allowUnfree = true;
+        # config.allowUnsupportedSystem = true;
       };
 
       androidComposition = pkgs.androidenv.composeAndroidPackages {

@@ -28,6 +28,15 @@ nix flake check
 ## Dev shells (`*-dev`)
 
 `nix develop` подтягивает компилятор, LSP, linter, formatter. Изолировано от системы.
+Внутри dev-шаблонов есть `NOTE` для обычной кастомизации и `WARNING` для случаев, где нужны unfree-пакеты или unsupported system.
+
+```nix
+pkgs = import nixpkgs {
+  inherit system;
+  config.allowUnfree = true;
+  config.allowUnsupportedSystem = true;
+};
+```
 
 | Шаблон | Язык / версия | LSP | Linter | Formatter | Дополнительно |
 |--------|---------------|-----|--------|-----------|---------------|

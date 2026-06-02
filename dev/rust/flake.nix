@@ -12,6 +12,13 @@
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
+      # NOTE: Replace or add packages below to match your project.
+      # WARNING: For unfree or unsupported packages, import nixpkgs with config:
+      # pkgs = import nixpkgs {
+      #   inherit system;
+      #   config.allowUnfree = true;
+      #   config.allowUnsupportedSystem = true;
+      # };
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.default = pkgs.mkShell {
