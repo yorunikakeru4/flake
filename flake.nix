@@ -23,6 +23,26 @@
         description = "Rust build shell";
       };
 
+      node-build = {
+        path = ./build/node;
+        description = "Node.js dream2nix build flake";
+      };
+
+      bun-build = {
+        path = ./build/bun;
+        description = "Bun bun2nix build flake";
+      };
+
+      typescript-build = {
+        path = ./build/typescript;
+        description = "TypeScript esbuild dream2nix build flake";
+      };
+
+      lua-build = {
+        path = ./build/lua;
+        description = "Lua 5.4 LuaRocks build flake";
+      };
+
       elixir-dev = {
         path = ./dev/elixir;
         description = "Elixir dev shell";
@@ -41,11 +61,6 @@
       cpp-build = {
         path = ./build/cpp;
         description = "CPP build shell";
-      };
-
-      c-sharp-dev = {
-        path = ./dev/c-sharp;
-        description = "C# dev shell";
       };
 
       android-dev = {

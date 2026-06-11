@@ -48,7 +48,6 @@ pkgs = import nixpkgs {
 | `elixir-dev` | Elixir + Erlang | — | — | — | inotify-tools |
 | `lua-dev` | Lua | lua-language-server | — | stylua | — |
 | `cpp-dev` | Clang | clang-tools | — | — | lldb, gdb, cmake, gnumake |
-| `c-sharp-dev` | .NET | omnisharp-roslyn, csharp-ls | — | — | — |
 | `android-dev` | Android SDK 35 + NDK 27 | — | — | — | cmake, ninja, clang |
 | `php-dev` | PHP 8.4 | phpactor | php-cs-fixer | — | — |
 | `js-dev` | Node.js | — | — | prettierd | TypeScript, Vite, Bun |
@@ -66,6 +65,10 @@ pkgs = import nixpkgs {
 | `android-build` | Android + Gradle + JDK 17 + NDK 27 | — |
 | `go-build` | Go (buildGoModule) | alejandra, gofmt |
 | `haskell-build` | Haskell / Cabal (callCabal2nix) | alejandra, ormolu |
+| `node-build` | Node.js / npm / dream2nix | alejandra, prettier |
+| `bun-build` | Bun / bun2nix | alejandra, prettier |
+| `typescript-build` | TypeScript / esbuild / dream2nix | alejandra, prettier |
+| `lua-build` | Lua 5.4 / LuaRocks | alejandra, stylua |
 
 ## Кастомизация
 
@@ -128,3 +131,24 @@ haskellPkgs = pkgs.haskellPackages;
 haskellPkgs = pkgs.haskell.packages.ghc966;
 haskellPkgs = pkgs.haskell.packages.ghc947;
 ```
+
+### Node.js и TypeScript build — lock-файл
+
+`node-build` и `typescript-build` используют dream2nix и требуют
+`package-lock.json`. Имя пакета в `flake.nix` должно совпадать с `name` в
+`package.json`. Для `nix run` добавьте исполняемый файл в поле `bin`.
+
+### Bun build — сгенерировать bun.nix
+
+```bash
+bun install
+bun2nix -o bun.nix
+```
+
+Повторяйте генерацию `bun.nix` после изменения `bun.lock`.
+
+### Lua build — rockspec
+
+`lua-build` использует Lua 5.4 и `buildLuaApplication`. Имя rockspec по
+умолчанию: `base-0.1.0-1.rockspec`. Измените `packageName`, `version` и
+`knownRockspec` в шаблоне под проект.
